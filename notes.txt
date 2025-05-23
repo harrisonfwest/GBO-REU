@@ -1,0 +1,16 @@
+RAMPS: Surveys mid-plane with ammonia, sees weaker correlation between clump size and turbulent velocity dispersion than suggested by Larson (1980)
+
+Larson (1980): Mostly 13CO, but surveys objects outside of the milky way
+
+Investigating if the CMZ behaves weirdly despite inflow of otherwise typical dust, or if the inflow of dust with weird behavior/properties
+causes the CMZ to behave weirdly
+If objects outside the milky way show a stronger trend (note that Larson had much smaller sample size than RAMPS), could imply that
+    the clumps in the milky way are different to those outside. Could imply unique composition or behavior of milky way relative to other bodies
+
+
+Sormani/Barnes: Ideas of note for future interest
+    "There are very little direct observational constraints on the amount of gas raining from the cicumgalactic medium"
+
+    "Unless the bar is much younger than currently believed, some gas replenishment must take place in the region just outside the bar. 
+    This may be considered an indirect evidence for the presence of radial flows within the disc of our Galaxy which bring the gas down 
+    to the outskirts of the Galactic bar. The mechanism by which this happens is unclear and deserves further investigation"
