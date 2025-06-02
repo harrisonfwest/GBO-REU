@@ -20,3 +20,6 @@ ApJ, 699, 1092, 0809.1397: https://ui.adsabs.harvard.edu/abs/2009ApJ...699.1092H
   * Presents *line widths (FWHM)*
 5. Veena, V. S. et al. 2024, A&A, 689, A121, 2407.14338: https://ui.adsabs.harvard.edu/abs/2024A%26A...689A.121V/abstract
   * Presents *line widths (FWHM)*
+
+
+Tuesday: Cross-reference Urquhart with RAMPS (matching by location via. LM script in slack within ~30 arcsec); compare two catalogs' values for R, sigma (i.e. co-plot), and eventually glue all back together.
