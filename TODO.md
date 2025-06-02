@@ -6,9 +6,12 @@ Running to-do list of tasks relevant to this research:
 
 
 Butterfield et al, 2025 Sources:
-1. Oka et al. 2001a
-2. Kauffmann et al. 2017
-3. Heyer et al. 2009
-4. Urquhart et al. 2015
-5. Veena et al. 2024
-6. This work (Butterfield)
+1. Oka, T., Hasegawa, T., Sato, F., Tsuboi, M., & Miyazaki,
+A. 2001a, PASJ, 53, 787
+2. Kauffmann, J., Pillai, T., Zhang, Q., Menten, K. M.,
+Goldsmith, P. F., Lu, X., & Guzm ́an, A. E. 2017, A&A,
+603, A89, 1610.03499
+3. Heyer, M., Krawczyk, C., Duval, J., & Jackson, J. M. 2009,
+ApJ, 699, 1092, 0809.1397
+4. Urquhart, J. S. et al. 2015, MNRAS, 452, 4029, 1507.02187
+5. Veena, V. S. et al. 2024, A&A, 689, A121, 2407.14338
