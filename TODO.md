@@ -3,7 +3,7 @@ Running to-do list of tasks relevant to this research:
 2. It's not been decided yet exactly how the source-finding will be done but it would be useful to do the exact same thing that was done for the RAMPS data, so that we can do a side-by-side analysis. There's no need for you to jump on to this right now but it would be a good idea for you to read through the thesis I gave you and look at the way that Taylor did these things for the RAMPS data. If you think you can figure it out, it would be good to try and perform the same source-finding/identification procedures on the Midpoint data. You can find the ammonia (1,1) cube at /home/scratch/lmorgan/Projects/GalacticBar/Data/Pilot_All/Pilot_All/Pilot_NH3_11_bl2.fits
 3. Learn about ammonia spectra: (J,K) transition meaning (spin, projection of spin onto axis of molecule); Butterfield et al, 2025 has spectra for various transitions
 
-Some velocity dispersion (1sigma standard deviation), some line width (FWHM): FWHM = 2 sqrt(2 * ln(2)) * sigma
+FWHM = 2 sqrt(2 * ln(2)) * sigma; FWHM ~ 2.35 * sigma
 
 Butterfield et al, 2025 Sources:
 1. Oka, T., Hasegawa, T., Sato, F., Tsuboi, M., Miyazaki, A.,
@@ -20,9 +20,3 @@ ApJ, 699, 1092, 0809.1397: https://ui.adsabs.harvard.edu/abs/2009ApJ...699.1092H
   * Presents *line widths (FWHM)*
 5. Veena, V. S. et al. 2024, A&A, 689, A121, 2407.14338: https://ui.adsabs.harvard.edu/abs/2024A%26A...689A.121V/abstract
   * Presents *line widths (FWHM)*
-
-
-Isochrone plot (density heatmaps) of clusters including RAMPS --> add labels for tracer and location (i.e. 12CO in CMZ will be different from NH3 in general galaxy)
-
-
-*Double-check each paper to confirm whether each dataset is using the linewidth or the velocity dispersion? Further, the original Larson paper used only the turbulent linewidths (I think). I doubt that any of the other papers is accounting for that but it would be good to make sure what the exact parameter being reported is*
