@@ -2,3 +2,13 @@ Running to-do list of tasks relevant to this research:
 1. Check the individual samples and collate the relevant information for each. That is, for Oka, Kauffmann, etc, go to each reference (can be found from the Butterfield et al, 2025 paper) and record the type of object they are observing (e.g., are they protostars, near the CMZ, in the Galactic disk, etc?), the type of observation they are performing (interferometer, single-dish), the tracer they are using (CO, ammonia, other), and the actual measurements they are presenting (are these the radius of the source, how did they measure this, by running some kind of source-finding algorithm?).
 2. It's not been decided yet exactly how the source-finding will be done but it would be useful to do the exact same thing that was done for the RAMPS data, so that we can do a side-by-side analysis. There's no need for you to jump on to this right now but it would be a good idea for you to read through the thesis I gave you and look at the way that Taylor did these things for the RAMPS data. If you think you can figure it out, it would be good to try and perform the same source-finding/identification procedures on the Midpoint data. You can find the ammonia (1,1) cube at /home/scratch/lmorgan/Projects/GalacticBar/Data/Pilot_All/Pilot_All/Pilot_NH3_11_bl2.fits
 3. Learn about ammonia spectra: (J,K) transition meaning (spin, projection of spin onto axis of molecule); Butterfield et al, 2025 has spectra for various transitions
+
+
+
+Butterfield et al, 2025 Sources:
+1. Oka et al. 2001a
+2. Kauffmann et al. 2017
+3. Heyer et al. 2009
+4. Urquhart et al. 2015
+5. Veena et al. 2024
+6. This work (Butterfield)
