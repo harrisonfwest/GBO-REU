@@ -6,8 +6,8 @@ Running to-do list of tasks relevant to this research:
 
 
 Butterfield et al, 2025 Sources:
-1. Oka, T., Hasegawa, T., Sato, F., Tsuboi, M., & Miyazaki,
-A. 2001a, PASJ, 53, 787: https://ui.adsabs.harvard.edu/abs/2001PASJ...53..787O/abstract
+1. Oka, T., Hasegawa, T., Sato, F., Tsuboi, M., Miyazaki, A.,
+& Sugimoto, M. 2001b, ApJ, 562, 348: https://ui.adsabs.harvard.edu/abs/2001ApJ...562..348O/abstract
 2. Kauffmann, J., Pillai, T., Zhang, Q., Menten, K. M.,
 Goldsmith, P. F., Lu, X., & Guzm ́an, A. E. 2017, A&A,
 603, A89, 1610.03499: https://ui.adsabs.harvard.edu/abs/2017A%26A...603A..89K/abstract
@@ -15,3 +15,6 @@ Goldsmith, P. F., Lu, X., & Guzm ́an, A. E. 2017, A&A,
 ApJ, 699, 1092, 0809.1397: https://ui.adsabs.harvard.edu/abs/2009ApJ...699.1092H/abstract
 4. Urquhart, J. S. et al. 2015, MNRAS, 452, 4029, 1507.02187: https://ui.adsabs.harvard.edu/abs/2015MNRAS.452.4029U/abstract
 5. Veena, V. S. et al. 2024, A&A, 689, A121, 2407.14338: https://ui.adsabs.harvard.edu/abs/2024A%26A...689A.121V/abstract
+
+
+Isochrone plot (density heatmaps) of clusters including RAMPS --> add labels for tracer and location (i.e. 12CO in CMZ will be different from NH3 in general galaxy)
