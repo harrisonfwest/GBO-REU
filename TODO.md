@@ -1,8 +1,8 @@
-1. Perform fitting on Butterfield data (NH3 1,1 and 2,2); construct single gaussian model. Source finding can then be applied to that model in order to create a mask of where sources are located in the structure observed by Butterfield+
-2. It's not been decided yet exactly how the source-finding will be done but it would be useful to do the exact same thing that was done for the RAMPS data, so that we can do a side-by-side analysis. There's no need for you to jump on to this right now but it would be a good idea for you to read through the thesis I gave you and look at the way that Taylor did these things for the RAMPS data. If you think you can figure it out, it would be good to try and perform the same source-finding/identification procedures on the Midpoint data. You can find the ammonia (1,1) cube at /home/scratch/lmorgan/Projects/GalacticBar/Data/Pilot_All/Pilot_All/Pilot_NH3_11_bl2.fits
-3. Learn about ammonia spectra: (J,K) transition meaning (spin, projection of spin onto axis of molecule); Butterfield et al, 2025 has spectra for various transitions
+1. Perform fitting on Butterfield data (NH3 1,1 and 2,2); construct single gaussian model. Source finding can then be applied to that model in order to create a mask of where sources are located in the structure observed by Butterfield+. Note that source finding may find different masks depending on the tracer which was fit to.
 
-FWHM = 2 sqrt(2 * ln(2)) * sigma; FWHM ~ 2.35 * sigma
+2. It's not been decided yet exactly how the source-finding will be done but it would be useful to do the exact same thing that was done for the RAMPS data, so that we can do a side-by-side analysis. There's no need for you to jump on to this right now but it would be a good idea for you to read through the thesis I gave you and look at the way that Taylor did these things for the RAMPS data. If you think you can figure it out, it would be good to try and perform the same source-finding/identification procedures on the Midpoint data. You can find the ammonia (1,1) cube at /home/scratch/lmorgan/Projects/GalacticBar/Data/Pilot_All/Pilot_All/Pilot_NH3_11_bl2.fits
+
+
 
 Butterfield et al, 2025 Sources:
 1. Oka, T., Hasegawa, T., Sato, F., Tsuboi, M., Miyazaki, A.,
@@ -21,4 +21,10 @@ ApJ, 699, 1092, 0809.1397: https://ui.adsabs.harvard.edu/abs/2009ApJ...699.1092H
   * Presents *line widths (FWHM)*
 
 
-Tuesday: Cross-reference Urquhart with RAMPS (matching by location via. LM script in slack within ~30 arcsec); compare two catalogs' values for R, sigma (i.e. co-plot), and eventually glue all back together.
+
+Misc. Papers:
+1. https://ui.adsabs.harvard.edu/abs/2025nsf....2441452C/abstract
+2. https://ui.adsabs.harvard.edu/abs/2025MNRAS.540L..21M/abstract
+3. https://ui.adsabs.harvard.edu/abs/2025DDA....5640102M/abstract
+4. https://ui.adsabs.harvard.edu/abs/2025AJ....169..337W/abstract
+5. https://ui.adsabs.harvard.edu/abs/2025AJ....169..330R/abstract
