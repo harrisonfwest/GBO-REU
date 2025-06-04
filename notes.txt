@@ -26,5 +26,8 @@ of possible energy states.
 
 (J, K) transition: Magnetic quantum number, projection of magnetization onto axis of symmetry of the molecule
 
+Lower Q.N. indicates N is further from plane of H pyramidal bases, so observed more at given temperature. Given a state (J, K=J), inversion across plane
+corresponds to given five-finger structure (for lower states).
+
 FWHM = 2 sqrt(2 * ln(2)) * sigma; FWHM ~ 2.35 * sigma
 
