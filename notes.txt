@@ -30,3 +30,5 @@ Lower Q.N. indicates N is further from plane of H pyramidal bases, so observed m
 corresponds to given five-finger structure (for lower states).
 
 FWHM = 2 sqrt(2 * ln(2)) * sigma; FWHM ~ 2.35 * sigma
+
+CARTA fits viewer
