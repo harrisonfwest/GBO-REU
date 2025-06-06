@@ -54,4 +54,3 @@ Two distinct species of NH3 are said to exist from this; ortho-NH3 (ΔK%3==0) an
 * Transitions between ortho and para NH3 are forbidden by the fact that normal radiative and collisional transitions do not change spin orientation
 * Vibrational motion: Nitrogen atom quantum tunnels through plane of H atoms, since the potential barrier due to the Hydrogena atoms is low enough
 that such tunneling occurs rapidly. Therefore, the two lowest vibrational states emit transition frequencies in microwave.
-* 
