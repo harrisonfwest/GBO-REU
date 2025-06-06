@@ -9,9 +9,8 @@ If objects outside the milky way show a stronger trend (note that Larson had muc
 
 
 Sormani/Barnes: Ideas of note for future interest
-    "There are very little direct observational constraints on the amount of gas raining from the circumgalactic medium"
-
-    "Unless the bar is much younger than currently believed, some gas replenishment must take place in the region just outside the bar. 
+* "There are very little direct observational constraints on the amount of gas raining from the circumgalactic medium"
+* "Unless the bar is much younger than currently believed, some gas replenishment must take place in the region just outside the bar. 
     This may be considered an indirect evidence for the presence of radial flows within the disc of our Galaxy which bring the gas down 
     to the outskirts of the Galactic bar. The mechanism by which this happens is unclear and deserves further investigation"
 
