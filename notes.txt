@@ -24,17 +24,10 @@ Hyperfine structure cont.: From lab, known expected ratios between main line and
 Ratio of transition line amplitudes (i.e. (1,1) vs. (2,2)) informs temperature via a Boltzmann distribution-based partition function of relative occupanies
 of possible energy states.
 
-(J, K) transition: Magnetic quantum number, projection of magnetization onto axis of symmetry of the molecule
-
 Lower Q.N. indicates N is further from plane of H pyramidal bases, so observed more at given temperature. Given a state (J, K=J), inversion across plane
 corresponds to given five-finger structure (for lower states).
 
 FWHM = 2 sqrt(2 * ln(2)) * sigma; FWHM ~ 2.35 * sigma
-
-CARTA fits viewer
-
-6/5/25: Modified logic from gaussian fitting script to generate new output FITS images
-
 
 Butterfield et al, 2025 Sources:
 1. Oka, T., Hasegawa, T., Sato, F., Tsuboi, M., Miyazaki, A.,
@@ -51,3 +44,14 @@ ApJ, 699, 1092, 0809.1397: https://ui.adsabs.harvard.edu/abs/2009ApJ...699.1092H
   * Presents *line widths (FWHM)*
 5. Veena, V. S. et al. 2024, A&A, 689, A121, 2407.14338: https://ui.adsabs.harvard.edu/abs/2024A%26A...689A.121V/abstract
   * Presents *line widths (FWHM)*
+
+Ho & Townes 1983: Ammonia
+* Rotational energy of ammonia is a function of the quantum numbers (J, K). J: Total angular momentum Q.N. K: Projection of J onto molecular axis
+* Without vibrational energy input orthogonal to molecular axis, the molecule will have electric dipole moments only along that axis. What follows
+from this is that dipole transitions between states with the same K value are normally forbidden
+* Normal intermolecular collisions produce only transitions in which ΔK%3==0.
+Two distinct species of NH3 are said to exist from this; ortho-NH3 (ΔK%3==0) and para-NH3 (otherwise).
+* Transitions between ortho and para NH3 are forbidden by the fact that normal radiative and collisional transitions do not change spin orientation
+* Vibrational motion: Nitrogen atom quantum tunnels through plane of H atoms, since the potential barrier due to the Hydrogena atoms is low enough
+that such tunneling occurs rapidly. Therefore, the two lowest vibrational states emit transition frequencies in microwave.
+* 
