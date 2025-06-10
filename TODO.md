@@ -1,28 +1,15 @@
-1. Perform fitting on Butterfield data (NH3 1,1 and 2,2); construct single gaussian model. Source finding can then be applied to that model in order to create a mask of where sources are located in the structure observed by Butterfield+. Note that source finding may find different masks depending on the tracer which was fit to.
+1. Write recap update of work done so far (don't need too much detail but enough to easily do writeup towards the end of the summer)
+2. Many readings in resources document (https://docs.google.com/document/d/1ObwMuLtU8MfxCWs3W2cSvS9j5Coeepc8HhY5rqHYujg/edit?tab=t.0)
+3. Consult Next Steps doc (https://docs.google.com/document/d/19Mw3AxDrPPO_4jn41D5DoU6Ujq9GDfbVx07n4lQyxpA/edit?tab=t.0)
 
-2. It's not been decided yet exactly how the source-finding will be done but it would be useful to do the exact same thing that was done for the RAMPS data, so that we can do a side-by-side analysis. There's no need for you to jump on to this right now but it would be a good idea for you to read through the thesis I gave you and look at the way that Taylor did these things for the RAMPS data. If you think you can figure it out, it would be good to try and perform the same source-finding/identification procedures on the Midpoint data. You can find the ammonia (1,1) cube at /home/scratch/lmorgan/Projects/GalacticBar/Data/Pilot_All/Pilot_All/Pilot_NH3_11_bl2.fits
-
-
-
-Butterfield et al, 2025 Sources:
-1. Oka, T., Hasegawa, T., Sato, F., Tsuboi, M., Miyazaki, A.,
-& Sugimoto, M. 2001b, ApJ, 562, 348: https://ui.adsabs.harvard.edu/abs/2001ApJ...562..348O/abstract
-  * Presents *velocity dispersion*
-2. Kauffmann, J., Pillai, T., Zhang, Q., Menten, K. M.,
-Goldsmith, P. F., Lu, X., & Guzm ́an, A. E. 2017, A&A,
-603, A89, 1610.03499: https://ui.adsabs.harvard.edu/abs/2017A%26A...603A..89K/abstract
-  * Presents *velocity dispersion*
-3. Heyer, M., Krawczyk, C., Duval, J., & Jackson, J. M. 2009,
-ApJ, 699, 1092, 0809.1397: https://ui.adsabs.harvard.edu/abs/2009ApJ...699.1092H/abstract
-  * Presents *velocity dispersion* as reported in Solomon et al. 1987 (SRBY)
-4. Urquhart, J. S. et al. 2015, MNRAS, 452, 4029, 1507.02187: https://ui.adsabs.harvard.edu/abs/2015MNRAS.452.4029U/abstract
-  * Presents *line widths (FWHM)*
-5. Veena, V. S. et al. 2024, A&A, 689, A121, 2407.14338: https://ui.adsabs.harvard.edu/abs/2024A%26A...689A.121V/abstract
-  * Presents *line widths (FWHM)*
+"Various PPVII chapters - These represent the current state of the field, these three are the most relevant to our project."
+1. Filament Formation - https://ui.adsabs.harvard.edu/abs/2023ASPC..534..153H/abstract
+2. Star Formation in the CMZ - https://ui.adsabs.harvard.edu/abs/2023ASPC..534...83H/abstract
+3. From Bubbles and Filaments to Cores and Disks - https://ui.adsabs.harvard.edu/abs/2023ASPC..534..233P/abstract
+4. The PPVII chapters are all worth reading, take a look at http://ppvii.org/chapter-list/index.html. If the particular chapter isn't linked there, search for the author at https://ui.adsabs.harvard.edu/).
 
 
-
-Misc. Papers:
+Misc. Papers to read:
 1. https://ui.adsabs.harvard.edu/abs/2025nsf....2441452C/abstract
 2. https://ui.adsabs.harvard.edu/abs/2025MNRAS.540L..21M/abstract
 3. https://ui.adsabs.harvard.edu/abs/2025DDA....5640102M/abstract
