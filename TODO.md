@@ -1,6 +1,9 @@
-1. Write recap update of work done so far (don't need too much detail but enough to easily do writeup towards the end of the summer)
-2. Many readings in resources document (https://docs.google.com/document/d/1ObwMuLtU8MfxCWs3W2cSvS9j5Coeepc8HhY5rqHYujg/edit?tab=t.0)
-3. Consult Next Steps doc (https://docs.google.com/document/d/19Mw3AxDrPPO_4jn41D5DoU6Ujq9GDfbVx07n4lQyxpA/edit?tab=t.0)
+1. Work recap: spectral fitting
+2. Spectral fitting misses some areas: Increase sensitivity (<5 sigma)?
+3. Many readings in resources document (https://docs.google.com/document/d/1ObwMuLtU8MfxCWs3W2cSvS9j5Coeepc8HhY5rqHYujg/edit?tab=t.0)
+
+
+
 
 "Various PPVII chapters - These represent the current state of the field, these three are the most relevant to our project."
 1. Filament Formation - https://ui.adsabs.harvard.edu/abs/2023ASPC..534..153H/abstract
