@@ -1,8 +1,7 @@
 1. Work recap: spectral fitting
-2. Spectral fitting misses some areas: Increase sensitivity (<5 sigma)?
-3. Many readings in resources document (https://docs.google.com/document/d/1ObwMuLtU8MfxCWs3W2cSvS9j5Coeepc8HhY5rqHYujg/edit?tab=t.0)
-
-
+2. Animate gaussian model FITS in python (instead of screenrecorded carta)
+3. Spectral fitting misses some areas: Increase sensitivity (<5 sigma)?
+4. Many readings in resources document (https://docs.google.com/document/d/1ObwMuLtU8MfxCWs3W2cSvS9j5Coeepc8HhY5rqHYujg/edit?tab=t.0)
 
 
 "Various PPVII chapters - These represent the current state of the field, these three are the most relevant to our project."
