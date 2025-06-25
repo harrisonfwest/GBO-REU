@@ -53,3 +53,10 @@ Two distinct species of NH3 are said to exist from this; ortho-NH3 (ΔK%3==0) an
 * Transitions between ortho and para NH3 are forbidden by the fact that normal radiative and collisional transitions do not change spin orientation
 * Vibrational motion: Nitrogen atom quantum tunnels through plane of H atoms, since the potential barrier due to the Hydrogena atoms is low enough
 that such tunneling occurs rapidly. Therefore, the two lowest vibrational states emit transition frequencies in microwave.
+
+Faure+13
+* Radiative and non-reactive collisional transitions do not normally change spin orientations. Thus, transitions between ortho and para NH3 are highly forbidden
+* Only reactive collisions with protons and protonated species and involving scrambling of protons in th e reaction complex can possibly mix ortho and para species
+* The rotational temperature within the same-spin species should reflect the kinetic temperature
+* The excitation temperature between ortho and para species ('spin temperature') should reflect the formation temperature of the gas
+* No physically allowed LTE allows an ortho to para ratio (OPR) below 1
