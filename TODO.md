@@ -2,7 +2,7 @@
 1. Filament Formation - https://ui.adsabs.harvard.edu/abs/2023ASPC..534..153H/abstract
 2. Star Formation in the CMZ - https://ui.adsabs.harvard.edu/abs/2023ASPC..534...83H/abstract
 3. From Bubbles and Filaments to Cores and Disks - https://ui.adsabs.harvard.edu/abs/2023ASPC..534..233P/abstract
-4. The PPVII chapters are all worth reading, take a look at http://ppvii.org/chapter-list/index.html. If the particular chapter isn't linked there, search for the author at https://ui.adsabs.harvard.edu/).
+4. The PPVII chapters are all worth reading, take a look at http://ppvii.org/chapter-list/index.html. If the particular chapter isn't linked there, search for the author at https://ui.adsabs.harvard.edu/.
 
 
 Misc. Papers to read:
