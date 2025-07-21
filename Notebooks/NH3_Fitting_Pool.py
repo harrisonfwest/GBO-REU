@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import astropy.units as u
 import warnings
+import os
+from astropy.wcs import WCS
 from astropy.io import fits
 from scipy.optimize import curve_fit
 from spectral_cube import SpectralCube
@@ -33,17 +35,10 @@ vmargin = 50.
 threshold = 3
 min_peak_separation_chan = 3
 hf_lv = 0.5
-vl = 150 * u.km / u.s
-vh = 240 * u.km / u.s
-rmsvl = 250 * u.km / u.s
-rmsvh = 300 * u.km / u.s
-
-# Load data
-path = '/home/scratch/hfwest/Pilot/'
-outdir = path + 'Results/'
-suffixout = 'Pool'
-Cube = SpectralCube.read(path + 'Data/Pilot_NH3_11_bl.fits')
-prefixout = 'Pilot_NH3_11'
+vl = 140 * u.km / u.s
+vh = 260 * u.km / u.s
+rmsvl = 280 * u.km / u.s
+rmsvh = 320 * u.km / u.s
 
 # Model functions
 def gaussian(x, amp, vel, sigma):
@@ -60,6 +55,13 @@ def quad_func(x, amp0, vel0, sigma0, tau0):
 
 def double_quad_func(x, amp0, vel0, sigma0, tau0, amp1, vel1, sigma1, tau1):
     return quad_func(x, amp0, vel0, sigma0, tau0) + quad_func(x, amp1, vel1, sigma1, tau1)
+
+# Load data
+path = '/home/scratch/hfwest/RAMPS/'
+outdir = path + 'Results/28_5/'
+suffixout = 'Pool'
+Cube = SpectralCube.read(os.path.join(path, 'Data/Pilot_All/Pilot_All/Pilot_NH3_11_bl.fits'))
+prefixout = 'Pilot_NH3_11'
 
 Cube = Cube.with_spectral_unit(u.km/u.s, velocity_convention='radio', rest_value=nu11 * u.Hz)
 Cube_slab = Cube.spectral_slab(vl, vh)
@@ -99,7 +101,7 @@ def fit_pixel(j, i):
     y = spec[mask]
 
     try:
-        p1, c1 = curve_fit(quad_func, x, y, p0=[amp0, vel0, 1.0, 1.0], bounds=([threshold*rms, vel0-10, 0.01, 0.01], [amp0*2, vel0+10, 25, 10]))
+        p1, c1 = curve_fit(quad_func, x, y, p0=[amp0, vel0, 2.0, 1.0], bounds=([threshold*rms, vel0-10, 0.01, 0.01], [amp0*2, vel0+10, 50, 50]))
         residuals1 = y - quad_func(x, *p1)
         chi1 = np.sum((residuals1 / rms)**2)
         dof1 = len(y) - 4
@@ -109,17 +111,18 @@ def fit_pixel(j, i):
             pmax2 = peaks[sorted_idx[1]]
             amp1 = spec[pmax2]
             vel1 = vel_axis[pmax2].value
-            p2, c2 = curve_fit(double_quad_func, x, y,
-                               p0=[amp0, vel0, 1.0, 1.0, amp1, vel1, 1.0, 1.0],
-                               bounds=([threshold*rms, vel0-10, 0.01, 0.01, threshold*rms, vel1-10, 0.01, 0.01],
-                                       [amp0*2, vel0+10, 25, 10, amp1*2, vel1+10, 25, 10]))
-            residuals2 = y - double_quad_func(x, *p2)
-            chi2 = np.sum((residuals2 / rms)**2)
-            bic2 = chi2 + 8 * np.log(len(y))
+            if amp1 > amp0*0.5:
+                p2, c2 = curve_fit(double_quad_func, x, y,
+                                   p0=[amp0, vel0, 2.0, 1.0, amp1, vel1, 2.0, 1.0],
+                                   bounds=([threshold*rms, vel0-10, 0.01, 0.01, threshold*rms, vel1-10, 0.01, 0.01],
+                                           [amp0*2, vel0+10, 50, 50, amp1*2, vel1+10, 50, 50]))
+                residuals2 = y - double_quad_func(x, *p2)
+                chi2 = np.sum((residuals2 / rms)**2)
+                bic2 = chi2 + 8 * np.log(len(y))
 
-            if bic2 < bic1:
-                yfit = double_quad_func(full_vel_axis, *p2)
-                return (2, j, i, p2, yfit)
+                if bic2 < bic1:
+                    yfit = double_quad_func(full_vel_axis, *p2)
+                    return (2, j, i, p2, yfit)
 
         yfit = quad_func(full_vel_axis, *p1)
         return (1, j, i, p1, yfit)
@@ -149,7 +152,7 @@ def run_parallel():
             NCompMap[j, i] = ncomp
             FitCube[:, j, i] = yfit
             GaussCube[:, j, i] = (1-np.exp(-popt[0]*popt[3]))/(1-np.exp(-popt[3])) * np.exp(-(full_vel_axis - popt[1])**2 / (2 * popt[2]**2))
-            TMax1cMap[j, i] = popt[0]
+            TMax1cMap[j, i] = (1-np.exp(-popt[0]*popt[3]))/(1-np.exp(-popt[3]))
             Vel1cMap[j, i] = popt[1]
             Sigma1cMap[j, i] = popt[2]
             Tau1cMap[j, i] = popt[3]
@@ -163,7 +166,7 @@ def run_parallel():
             NCompMap[j, i] = ncomp
             FitCube[:, j, i] = yfit
             GaussCube[:, j, i] = (1-np.exp(-popt[0]*popt[3]))/(1-np.exp(-popt[3])) * np.exp(-(full_vel_axis - popt[1])**2 / (2 * popt[2]**2))+(1-np.exp(-popt[4]*popt[7]))/(1-np.exp(-popt[7])) * np.exp(-(full_vel_axis - popt[5])**2 / (2 * popt[6]**2))
-            TMax1cMap[j, i] = TMaxArr[largeridx]
+            TMax1cMap[j, i] = (1-np.exp(-TMaxArr[largeridx]*TauArr[largeridx]))/(1-np.exp(-TauArr[largeridx]))
             Vel1cMap[j, i] = VelArr[largeridx]
             Sigma1cMap[j, i] = SigmaArr[largeridx]
             Tau1cMap[j, i] = TauArr[largeridx]
