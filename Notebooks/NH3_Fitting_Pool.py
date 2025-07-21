@@ -35,9 +35,9 @@ vmargin = 50.
 threshold = 3
 min_peak_separation_chan = 3
 hf_lv = 0.5
-vl = 140 * u.km / u.s
-vh = 260 * u.km / u.s
-rmsvl = 280 * u.km / u.s
+vl = 150 * u.km / u.s
+vh = 240 * u.km / u.s
+rmsvl = 250 * u.km / u.s
 rmsvh = 320 * u.km / u.s
 
 # Model functions
@@ -57,10 +57,10 @@ def double_quad_func(x, amp0, vel0, sigma0, tau0, amp1, vel1, sigma1, tau1):
     return quad_func(x, amp0, vel0, sigma0, tau0) + quad_func(x, amp1, vel1, sigma1, tau1)
 
 # Load data
-path = '/home/scratch/hfwest/RAMPS/'
-outdir = path + 'Results/28_5/'
+path = '/home/scratch/hfwest/Pilot/'
+outdir = path + 'Results/'
 suffixout = 'Pool'
-Cube = SpectralCube.read(os.path.join(path, 'Data/Pilot_All/Pilot_All/Pilot_NH3_11_bl.fits'))
+Cube = SpectralCube.read(path + 'Data/Pilot_NH3_11_bl.fits')
 prefixout = 'Pilot_NH3_11'
 
 Cube = Cube.with_spectral_unit(u.km/u.s, velocity_convention='radio', rest_value=nu11 * u.Hz)
