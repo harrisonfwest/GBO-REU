@@ -12,27 +12,21 @@ nu11 = 23.6944955e9
 Cube = SpectralCube.read('/home/scratch/hfwest/Pilot/Data/Pilot_NH3_11_cropped.fits')
 Cube = Cube.with_spectral_unit(u.km/u.s, velocity_convention='radio', rest_value=nu11 * u.Hz)
 
-rmsvl = 250 * u.km / u.s
-rmsvh = 320 * u.km / u.s
+vl = 150 * u.km / u.s
+vh = 240 * u.km / u.s
 
-RMS_slab = Cube.spectral_slab(rmsvl, rmsvh)
-rms_data = RMS_slab.unmasked_data[:].value
+Cube_slab = Cube.spectral_slab(vl, vh)
+cube_data = Cube_slab.unmasked_data[:].value
+vel_axis = Cube_slab.spectral_axis
 
 nz, ny, nx = Cube.shape
 
-arr = np.empty(shape= ny * nx)
-count = 0
+peak = 0
 
 # indices = [(j, i) for j in range(ny) for i in range(nx)]
 for j in range(ny):
     for i in range(nx):
-        rms = np.std(rms_data[:, j, i])
-        arr[count] = rms
-        count += 1
+        if np.nanmax(cube_data[:, j, i]) >= peak:
+            peak = np.nanmax(cube_data[:, j, i])
 
-mask = ~np.isnan(arr)
-
-# Use the boolean mask to select only the non-NaN values from the array
-clean_data = arr[mask]
-
-print(np.median(clean_data)) # 0.011193453871188922
+print(peak)

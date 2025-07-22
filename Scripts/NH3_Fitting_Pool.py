@@ -60,8 +60,8 @@ def double_quad_func(x, amp0, vel0, sigma0, tau0, amp1, vel1, sigma1, tau1):
 path = '/home/scratch/hfwest/Pilot/'
 outdir = path + 'Results/'
 suffixout = 'Pool'
-Cube = SpectralCube.read(path + 'Data/Pilot_NH3_11_bl.fits')
-prefixout = 'Pilot_NH3_11'
+Cube = SpectralCube.read(path + 'Data/Pilot_NH3_11_cropped.fits')
+prefixout = 'Pilot_NH3_11_cropped'
 
 Cube = Cube.with_spectral_unit(u.km/u.s, velocity_convention='radio', rest_value=nu11 * u.Hz)
 Cube_slab = Cube.spectral_slab(vl, vh)
