@@ -35,9 +35,9 @@ vmargin = 50.
 threshold = 3
 min_peak_separation_chan = 3
 hf_lv = 0.5
-vl = 150 * u.km / u.s
-vh = 240 * u.km / u.s
-rmsvl = 250 * u.km / u.s
+vl = 140 * u.km / u.s
+vh = 260 * u.km / u.s
+rmsvl = 280 * u.km / u.s
 rmsvh = 320 * u.km / u.s
 
 # Model functions
@@ -56,12 +56,19 @@ def quad_func(x, amp0, vel0, sigma0, tau0):
 def double_quad_func(x, amp0, vel0, sigma0, tau0, amp1, vel1, sigma1, tau1):
     return quad_func(x, amp0, vel0, sigma0, tau0) + quad_func(x, amp1, vel1, sigma1, tau1)
 
+def quadrupole_to_peakmatched_gaussian(popt, vel_axis):
+    A0, v0, sigma0, tau0 = popt
+    quad = quad_func(vel_axis, A0, v0, sigma0, tau0)
+    peak = np.max(quad)
+    gauss = peak * np.exp(-(vel_axis - v0)**2 / (2 * sigma0**2))
+    return gauss
+
 # Load data
 path = '/home/scratch/hfwest/Pilot/'
 outdir = path + 'Results/'
 suffixout = 'Pool'
 Cube = SpectralCube.read(path + 'Data/Pilot_NH3_11_cropped.fits')
-prefixout = 'Pilot_NH3_11_cropped'
+prefixout = 'Pilot_NH3_11'
 
 Cube = Cube.with_spectral_unit(u.km/u.s, velocity_convention='radio', rest_value=nu11 * u.Hz)
 Cube_slab = Cube.spectral_slab(vl, vh)
@@ -132,7 +139,12 @@ def fit_pixel(j, i):
 
 # Multiprocessing dispatcher
 def run_parallel():
+#     xpix = 87
+#     ypix = 79   #two-component
+#     # xpix = 99
+#     # ypix = 85   #single-component
     indices = [(j, i) for j in range(ny) for i in range(nx)]
+#     indices = [(j, i) for j in [ypix] for i in [xpix]]
     with Pool(processes=cpu_count()) as pool:
         results = pool.starmap(fit_pixel, indices)
 
@@ -144,6 +156,15 @@ def run_parallel():
     Sigma1cMap = np.full((ny, nx), np.nan)
     Tau1cMap = np.full((ny, nx), np.nan)
 
+    TMax2c1Map = np.full((ny, nx), np.nan)
+    Vel2c1Map = np.full((ny, nx), np.nan)
+    Sigma2c1Map = np.full((ny, nx), np.nan)
+    Tau2c1Map = np.full((ny, nx), np.nan)
+    TMax2c2Map = np.full((ny, nx), np.nan)
+    Vel2c2Map = np.full((ny, nx), np.nan)
+    Sigma2c2Map = np.full((ny, nx), np.nan)
+    Tau2c2Map = np.full((ny, nx), np.nan)
+
     for res in results:
         if res[3] is None:
             continue
@@ -151,8 +172,9 @@ def run_parallel():
             ncomp, j, i, popt, yfit = res
             NCompMap[j, i] = ncomp
             FitCube[:, j, i] = yfit
-            GaussCube[:, j, i] = (1-np.exp(-popt[0]*popt[3]))/(1-np.exp(-popt[3])) * np.exp(-(full_vel_axis - popt[1])**2 / (2 * popt[2]**2))
-            TMax1cMap[j, i] = (1-np.exp(-popt[0]*popt[3]))/(1-np.exp(-popt[3]))
+            g = quadrupole_to_peakmatched_gaussian(popt, full_vel_axis)
+            GaussCube[:, j, i] = g
+            TMax1cMap[j, i] =popt[0]
             Vel1cMap[j, i] = popt[1]
             Sigma1cMap[j, i] = popt[2]
             Tau1cMap[j, i] = popt[3]
@@ -163,13 +185,25 @@ def run_parallel():
             SigmaArr = [popt[2],popt[6]]
             TauArr = [popt[3],popt[7]]
             largeridx = TMaxArr.index(max(TMaxArr))
+            smalleridx = TMaxArr.index(min(TMaxArr))
+            g1 = quadrupole_to_peakmatched_gaussian(popt[largeridx*4:(largeridx*4)+4], full_vel_axis)
+            g2 = quadrupole_to_peakmatched_gaussian(popt[smalleridx*4:(smalleridx*4)+4], full_vel_axis)
             NCompMap[j, i] = ncomp
             FitCube[:, j, i] = yfit
-            GaussCube[:, j, i] = (1-np.exp(-popt[0]*popt[3]))/(1-np.exp(-popt[3])) * np.exp(-(full_vel_axis - popt[1])**2 / (2 * popt[2]**2))+(1-np.exp(-popt[4]*popt[7]))/(1-np.exp(-popt[7])) * np.exp(-(full_vel_axis - popt[5])**2 / (2 * popt[6]**2))
-            TMax1cMap[j, i] = (1-np.exp(-TMaxArr[largeridx]*TauArr[largeridx]))/(1-np.exp(-TauArr[largeridx]))
+            GaussCube[:, j, i] = g1+g2
+            TMax1cMap[j, i] = TMaxArr[largeridx]
             Vel1cMap[j, i] = VelArr[largeridx]
             Sigma1cMap[j, i] = SigmaArr[largeridx]
             Tau1cMap[j, i] = TauArr[largeridx]
+
+            TMax2c1Map[j, i] = TMaxArr[largeridx]
+            Vel2c1Map[j, i] = VelArr[largeridx]
+            Sigma2c1Map[j, i] = SigmaArr[largeridx]
+            Tau2c1Map[j, i] = TauArr[largeridx]
+            TMax2c2Map[j, i] = TMaxArr[smalleridx]
+            Vel2c2Map[j, i] = VelArr[smalleridx]
+            Sigma2c2Map[j, i] = SigmaArr[smalleridx]
+            Tau2c2Map[j, i] = TauArr[smalleridx]
 
     fits.PrimaryHDU(FitCube, header=header_3d).writeto(outdir + prefixout + '_Fit_' + suffixout + '.fits', overwrite=True)
     fits.PrimaryHDU(GaussCube, header=header_3d).writeto(outdir + prefixout + '_GaussFit_' + suffixout + '.fits', overwrite=True)
@@ -178,6 +212,14 @@ def run_parallel():
     fits.PrimaryHDU(Vel1cMap, header=header_2d).writeto(outdir + prefixout + '_Vel1c_' + suffixout + '.fits', overwrite=True)
     fits.PrimaryHDU(Sigma1cMap, header=header_2d).writeto(outdir + prefixout + '_Sigma1c_' + suffixout + '.fits', overwrite=True)
     fits.PrimaryHDU(Tau1cMap, header=header_2d).writeto(outdir + prefixout + '_Tau1c_' + suffixout + '.fits', overwrite=True)
+    fits.PrimaryHDU(TMax2c1Map, header=header_2d).writeto(outdir + prefixout + '_TMax2c1_' + suffixout + '.fits', overwrite=True)
+    fits.PrimaryHDU(Vel2c1Map, header=header_2d).writeto(outdir + prefixout + '_Vel2c1_' + suffixout + '.fits', overwrite=True)
+    fits.PrimaryHDU(Sigma2c1Map, header=header_2d).writeto(outdir + prefixout + '_Sigma2c1_' + suffixout + '.fits', overwrite=True)
+    fits.PrimaryHDU(Tau2c1Map, header=header_2d).writeto(outdir + prefixout + '_Tau2c1_' + suffixout + '.fits', overwrite=True)
+    fits.PrimaryHDU(TMax2c2Map, header=header_2d).writeto(outdir + prefixout + '_TMax2c2_' + suffixout + '.fits', overwrite=True)
+    fits.PrimaryHDU(Vel2c2Map, header=header_2d).writeto(outdir + prefixout + '_Vel2c2_' + suffixout + '.fits', overwrite=True)
+    fits.PrimaryHDU(Sigma2c2Map, header=header_2d).writeto(outdir + prefixout + '_Sigma2c2_' + suffixout + '.fits', overwrite=True)
+    fits.PrimaryHDU(Tau2c2Map, header=header_2d).writeto(outdir + prefixout + '_Tau2c2_' + suffixout + '.fits', overwrite=True)
 
 if __name__ == '__main__':
     run_parallel()

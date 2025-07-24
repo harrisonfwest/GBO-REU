@@ -43,22 +43,22 @@ def mse_costdv(factor):
 
 # File paths
 # Tile = 'L28_5'
-tiles = ['L10_5', 'L11', 'L11_5', 'L12', 'L12_5', 'L13', 'L13_5', 'L14', 'L14_5', 'L15', 'L15_5', 'L16', 
+tiles = ['L10', 'L10_5', 'L11', 'L11_5', 'L12', 'L12_5', 'L13', 'L13_5', 'L14', 'L14_5', 'L15', 'L15_5', 'L16', 
          'L16_5', 'L17', 'L17_5', 'L18', 'L18_5', 'L19', 'L19_5', 'L20', 'L20_5', 'L21', 'L21_5', 'L22', 'L22_5', 
          'L23', 'L23_5', 'L24', 'L24_5', 'L25', 'L25_5', 'L26', 'L26_5', 'L27', 'L27_5', 'L28', 'L28_5', 'L29', 
          'L29_5', 'L30', 'L30_5', 'L31', 'L31_5', 'L32', 'L32_5', 'L33', 'L33_5', 'L34', 'L34_5', 'L35', 'L35_5', 
          'L36', 'L36_5', 'L37', 'L37_5', 'L38', 'L38_5', 'L39', 'L39_5', 'L40', 'L40_5', 'L41']
 #path = '/Users/lmorgan/Documents/Projects/RAMPS/'
 path = '/home/scratch/lmorgan/Projects/RAMPS/'
-RAMPSClumpCat = os.path.join(path,'Data','RAMPS_Clump_Catalogue.txt')
-ClFClumpCat = os.path.join(path,'Data','RAMPS_ClF_Catalogue.txt')
+RAMPSClumpCat = path + 'Data/RAMPS_Clump_Catalogue.txt'
+ClFClumpCat = path + 'Data/RAMPS_ClF_Catalogue.txt'
 
 all_size_factors_MSE = []
 all_size_factors_leastSq = []
 all_SigV_factors_MSE = []
 all_SigV_factors_leastSq = []
 
-_plot = False
+_plot = False # Whether or not to show all plots for each tile (interrupts script)
 
 for Tile in tiles:
     dfRAMPS=pd.read_csv(RAMPSClumpCat,sep=r'\s+',comment='#',header=None,skiprows=1)
@@ -408,9 +408,11 @@ for Tile in tiles:
     else:
         print("No size ratios to summarize or plot.")
 
-print(f'Size scale factors (MSE): {all_size_factors_MSE}')
-print(f'Size scale factors (least squares): {all_size_factors_leastSq}')
+# print(f'Size scale factors (MSE): {all_size_factors_MSE}')
+# print(f'Size scale factors (least squares): {all_size_factors_leastSq}')
+print(f'Mean size factor (MSE): {np.mean(all_size_factors_MSE)}')
 print(f'Mean size factor (Least Squares): {np.mean(all_size_factors_leastSq)}')
-print(f'SigV scale factors (MSE): {all_SigV_factors_MSE}')
-print(f'SigV scale factors (least squares): {all_SigV_factors_leastSq}')
+# print(f'SigV scale factors (MSE): {all_SigV_factors_MSE}')
+# print(f'SigV scale factors (least squares): {all_SigV_factors_leastSq}')
+print(f'Mean SigV factor (MSE): {np.mean(all_SigV_factors_MSE)}')
 print(f'Mean SigV factor (Least Squares): {np.mean(all_SigV_factors_leastSq)}')
