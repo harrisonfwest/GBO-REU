@@ -58,6 +58,13 @@ all_size_factors_leastSq = []
 all_SigV_factors_MSE = []
 all_SigV_factors_leastSq = []
 
+total_RAMPS = 0
+total_ClF = 0
+
+total_RAMPS_5sig = 0
+total_ClF_5sig = 0
+
+
 _plot = False # Whether or not to show all plots for each tile (interrupts script)
 
 for Tile in tiles:
@@ -155,6 +162,13 @@ for Tile in tiles:
     print(f"{len(PeakTRAMPSClip[np.where(PeakTRAMPSClip > 5*TileRMS)])}")
     print(f"{len(RAMPSMatchedTs)*100/len(PeakTRAMPSClip):4.1f}% of RAMPS sources matched by ClumpFind")
     print(f"{len(RAMPSMatchedTs[np.where(RAMPSMatchedTs > 5*TileRMS)])*100/len(PeakTRAMPSClip[np.where(PeakTRAMPSClip > 5*TileRMS)]):4.1f}% of RAMPS sources matched by ClumpFind above 5 sigma")
+    
+    total_RAMPS += len(RAMPSMatchedTs)
+    total_ClF += len(PeakTRAMPSClip)
+
+    total_RAMPS_5sig += len(RAMPSMatchedTs[np.where(RAMPSMatchedTs > 5*TileRMS)])
+    total_ClF_5sig += len(PeakTRAMPSClip[np.where(PeakTRAMPSClip > 5*TileRMS)])
+    
     #print(5*TileRMS)
     # Plot the histograms with matched peak heights
     plt.figure(figsize=(8, 5))
@@ -416,3 +430,11 @@ print(f'Mean size factor (Least Squares): {np.mean(all_size_factors_leastSq)}')
 # print(f'SigV scale factors (least squares): {all_SigV_factors_leastSq}')
 print(f'Mean SigV factor (MSE): {np.mean(all_SigV_factors_MSE)}')
 print(f'Mean SigV factor (Least Squares): {np.mean(all_SigV_factors_leastSq)}')
+
+print(f'Total RAMPS sources: {total_RAMPS}')
+print(f'Total ClF sources: {total_ClF}')
+print(f'Total RAMPS % matched: {total_RAMPS * 100 / total_ClF}')
+
+print(f'Total 5sig RAMPS sources: {total_RAMPS_5sig}')
+print(f'Total 5sig ClF sources: {total_ClF_5sig}')
+print(f'Total 5sig RAMPS % matched: {total_RAMPS_5sig * 100 / total_ClF_5sig}')
